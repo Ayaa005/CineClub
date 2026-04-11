@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 10 avr. 2026 à 22:53
+-- Généré le : sam. 11 avr. 2026 à 15:56
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -32,7 +32,8 @@ CREATE TABLE `gallery` (
   `session_id` int(11) DEFAULT NULL,
   `image_path` varchar(500) DEFAULT NULL,
   `caption` varchar(200) DEFAULT NULL,
-  `uploaded_by` int(11) DEFAULT NULL
+  `uploaded_by` int(11) DEFAULT NULL,
+  `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -57,7 +58,8 @@ CREATE TABLE `invitations` (
 --
 
 INSERT INTO `invitations` (`id`, `code`, `created_by`, `session_id`, `used_by`, `used_at`, `expires_at`, `created_at`) VALUES
-(3, 'UYS85BA2', 16, NULL, 17, '2026-04-05 17:47:40', '2026-04-06 18:53:07', '2026-04-05 16:53:07');
+(3, 'UYS85BA2', 16, NULL, 17, '2026-04-05 17:47:40', '2026-04-06 18:53:07', '2026-04-05 16:53:07'),
+(4, 'VBMQJE5G', 16, NULL, NULL, NULL, '2026-04-11 23:33:43', '2026-04-10 21:33:43');
 
 -- --------------------------------------------------------
 
@@ -75,6 +77,13 @@ CREATE TABLE `movie_suggestions` (
   `description` text DEFAULT NULL,
   `genre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `movie_suggestions`
+--
+
+INSERT INTO `movie_suggestions` (`id`, `title`, `year`, `poster`, `suggested_by`, `votes`, `description`, `genre`) VALUES
+(6, 'inception', NULL, '', 16, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -117,7 +126,8 @@ CREATE TABLE `session_ratings` (
   `id` int(11) NOT NULL,
   `session_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `rating` decimal(2,1) DEFAULT NULL
+  `rating` decimal(2,1) DEFAULT NULL,
+  `comment` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -259,13 +269,13 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT pour la table `invitations`
 --
 ALTER TABLE `invitations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `movie_suggestions`
 --
 ALTER TABLE `movie_suggestions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `sessions`
