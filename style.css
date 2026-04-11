@@ -1,0 +1,199 @@
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #111, #000);
+    color: white;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: #0b0b0b;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.cine {
+    color: white;
+}
+
+.club {
+    color: red;
+}
+
+.menu a {
+    color: #aaa;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+/* Hover glow menu */
+.menu a:hover {
+    background: rgba(255, 0, 0, 0.15);
+    box-shadow: 0 0 12px red;
+    color: white;
+}
+
+/* Active menu item */
+.menu .active {
+    background: red;
+    color: white;
+}
+
+.login-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* ===== CONTENT ===== */
+.container {
+    padding: 50px;
+}
+
+.title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: red;
+    letter-spacing: 2px;
+}
+
+.add-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* ===== STATUS BUTTONS ===== */
+.status-buttons {
+    margin: 25px 0;
+}
+
+.status-buttons span {
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.attending {
+    background: rgba(255, 0, 0, 0.15);
+    color: red;
+}
+
+.not-attending {
+    background: #222;
+    color: #aaa;
+}
+
+/* ===== CARDS ===== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: #181818;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;
+    border: 1px solid #222;
+}
+
+/* Glow red hover */
+.card:hover {
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.6);
+    border-color: red;
+}
+
+.attending-card {
+    border-color: rgba(255, 0, 0, 0.3);
+}
+
+/* ===== AVATAR ===== */
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.avatar.red {
+    background: #5a1515;
+    color: red;
+}
+
+.avatar.gray {
+    background: #333;
+    color: #aaa;
+}
+
+/* ===== INFO ===== */
+.info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.info span {
+    display: block;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* ===== STATUS ICON ===== */
+.status {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status.ok {
+    background: rgba(255, 0, 0, 0.2);
+    color: red;
+}
+
+.status.no {
+    background: #333;
+    color: #aaa;
+}

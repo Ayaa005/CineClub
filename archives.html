@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CineClub - Archives</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="archives.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+    <div class="logo">
+        <span class="cine">CINE</span><span class="club">CLUB</span>
+    </div>
+    <nav class="menu">
+        <a href="#">Home</a>
+        <a href="#">Voting</a>
+        <a href="#">Planning</a>
+        <a href="#">Participants</a>
+        <a href="#">Snacks</a>
+        <a href="#" class="active">Archives</a>
+        <a href="#">Gallery</a>
+    </nav>
+    <button class="login-btn">Login</button>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="container">
+
+    <!-- Title row -->
+    <div class="title-row">
+        <h1>ARCHIVES</h1>
+        <button class="add-btn" onclick="openAddModal()">+ Add Movie Night</button>
+    </div>
+    <p class="subtitle">All our past movie nights, rated & remembered</p>
+
+    <!-- Stats -->
+    <div class="stats-row">
+        <span class="stat-chip red-chip" id="total-chip">🎬 6 movie nights</span>
+        <span class="stat-chip gray-chip" id="avg-chip">⭐ Avg rating: 4.0</span>
+        <span class="stat-chip gray-chip">📅 Since Jan 2024</span>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterBy('all', this)">All</button>
+        <button class="filter-btn" onclick="filterBy('Action', this)">Action</button>
+        <button class="filter-btn" onclick="filterBy('Thriller', this)">Thriller</button>
+        <button class="filter-btn" onclick="filterBy('Sci-Fi', this)">Sci-Fi</button>
+        <button class="filter-btn" onclick="filterBy('Drama', this)">Drama</button>
+        <button class="filter-btn" onclick="filterBy('Comedy', this)">Comedy</button>
+        <input class="search-input" type="text" placeholder="🔍 Search a film..." id="searchInput" oninput="renderCards()">
+    </div>
+
+    <!-- Archive grid -->
+    <div class="archive-grid" id="archiveGrid"></div>
+
+</main>
+
+<!-- ===== VIEW DETAIL MODAL ===== -->
+<div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+    <div class="modal">
+        <button class="modal-close" onclick="document.getElementById('detailModal').classList.remove('open')">✕</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<!-- ===== ADD MOVIE MODAL ===== -->
+<div class="modal-overlay" id="addModal" onclick="closeAddModal(event)">
+    <div class="modal">
+        <button class="modal-close" onclick="document.getElementById('addModal').classList.remove('open')">✕</button>
+        <h2 class="modal-title">Add Movie Night</h2>
+        <p class="modal-subtitle">Record a new movie night in the archives</p>
+
+        <div class="modal-section">
+            <label>Movie Title *</label>
+            <input id="f-title" type="text" placeholder="e.g. Inception" class="form-input">
+        </div>
+
+        <div class="form-grid">
+            <div class="modal-section">
+                <label>Year</label>
+                <input id="f-year" type="number" placeholder="2024" class="form-input">
+            </div>
+            <div class="modal-section">
+                <label>Genre</label>
+                <select id="f-genre" class="form-input">
+                    <option value="Action">Action</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Animation">Animation</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="modal-section">
+                <label>Date of Screening</label>
+                <input id="f-date" type="date" class="form-input">
+            </div>
+            <div class="modal-section">
+                <label>Rating (1–5)</label>
+                <input id="f-rating" type="number" min="1" max="5" placeholder="4" class="form-input">
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <label>Comment</label>
+            <textarea id="f-comment" rows="3" placeholder="What did everyone think?" class="form-input form-textarea"></textarea>
+        </div>
+
+        <div class="modal-section">
+            <label>Attendees (pick)</label>
+            <div class="attendee-picker" id="attendee-picker">
+                <label class="attendee-opt"><input type="checkbox" value="A" data-name="Alice"> Alice 👑</label>
+                <label class="attendee-opt"><input type="checkbox" value="B" data-name="Bob"> Bob</label>
+                <label class="attendee-opt"><input type="checkbox" value="C" data-name="Charlie"> Charlie</label>
+                <label class="attendee-opt"><input type="checkbox" value="D" data-name="Diana"> Diana</label>
+                <label class="attendee-opt"><input type="checkbox" value="E" data-name="Eve"> Eve</label>
+                <label class="attendee-opt"><input type="checkbox" value="F" data-name="Frank"> Frank</label>
+            </div>
+        </div>
+
+        <div class="form-submit">
+            <button class="add-btn" onclick="submitMovie()">Save Movie Night</button>
+        </div>
+        <p id="form-error" class="form-error">Please fill in the required fields (Title & Date).</p>
+    </div>
+</div>
+
+<script src="archives.js"></script>
+</body>
+</html>
