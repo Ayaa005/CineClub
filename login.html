@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+   
+    <title>CineClub - Login</title>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="Screenshot_2026-02-12_203643-removebg-preview.png" alt="CineClub Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="voting.html"><i class="fa-solid fa-check-to-slot"></i> Voting</a></li>
+            <li><a href="planning.html"><i class="fa-solid fa-calendar"></i> Planning</a></li>
+            <li><a href="participants.html"><i class="fa-solid fa-users"></i> Participants</a></li>
+            <li><a href="snaks.html"><i class="fa-solid fa-cookie-bite"></i> Snaks</a></li>
+            <li><a href="archives.html"><i class="fa-solid fa-box-archive"></i> Archives</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
+        </ul>
+        <button class="login-btn active-btn">Login</button>
+    </nav>
+
+    <!-- LOGIN / REGISTER SECTION -->
+    <div class="auth-wrapper">
+
+        <!-- LEFT — Cinema background info -->
+        <div class="auth-left">
+            <div class="auth-left-content">
+                <div class="brand">
+                    <i class="fa-solid fa-film"></i>
+                    <h2>CINE<span>CLUB</span></h2>
+                </div>
+                <p class="tagline">Your movie nights,<br>perfectly organized.</p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-check-to-slot"></i> Vote for the next film</li>
+                    <li><i class="fa-solid fa-calendar"></i> View upcoming sessions</li>
+                    <li><i class="fa-solid fa-cookie-bite"></i> Organize snacks</li>
+                    <li><i class="fa-solid fa-image"></i> Share memories in gallery</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- RIGHT — Forms -->
+        <div class="auth-right">
+
+            <!-- TABS -->
+            <div class="tabs">
+                <button class="tab active" id="tabLogin" onclick="switchTab('login')">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </button>
+                <button class="tab" id="tabRegister" onclick="switchTab('register')">
+                    <i class="fa-solid fa-user-plus"></i> Register
+                </button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <div class="form-container" id="loginForm">
+                <h2>Welcome Back</h2>
+                <p class="form-subtitle">Sign in to your CineClub account</p>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-envelope"></i> Email</label>
+                    <input type="email" placeholder="your@email.com" id="loginEmail">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-lock"></i> Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" placeholder="Enter your password" id="loginPassword">
+                        <button class="toggle-pw" onclick="togglePassword('loginPassword', this)">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <button class="submit-btn" onclick="handleLogin()">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                </button>
+
+                <div id="loginMsg" class="form-msg"></div>
+
+                <p class="switch-link">
+                    Don't have an account? 
+                    <a href="#" onclick="switchTab('register')">Register here</a>
+                </p>
+            </div>
+
+            <!-- REGISTER FORM -->
+            <div class="form-container hidden" id="registerForm">
+                <h2>Join CineClub</h2>
+                <p class="form-subtitle">Create your account to join the movie nights</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> First Name</label>
+                        <input type="text" placeholder="First name" id="regFirstName">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> Last Name</label>
+                        <input type="text" placeholder="Last name" id="regLastName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-envelope"></i> Email</label>
+                    <input type="email" placeholder="your@email.com" id="regEmail">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-lock"></i> Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" placeholder="Create a password" id="regPassword">
+                        <button class="toggle-pw" onclick="togglePassword('regPassword', this)">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-lock"></i> Confirm Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" placeholder="Confirm your password" id="regConfirm">
+                        <button class="toggle-pw" onclick="togglePassword('regConfirm', this)">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Password strength indicator -->
+                <div class="strength-bar-wrapper">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+                <p class="strength-text" id="strengthText"></p>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreeTerms">
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+                </div>
+
+                <button class="submit-btn" onclick="handleRegister()">
+                    <i class="fa-solid fa-user-plus"></i> Create Account
+                </button>
+
+                <div id="registerMsg" class="form-msg"></div>
+
+                <p class="switch-link">
+                    Already have an account? 
+                    <a href="#" onclick="switchTab('login')">Sign in here</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabLogin = document.getElementById('tabLogin');
+            const tabRegister = document.getElementById('tabRegister');
+
+            if (tab === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                tabLogin.classList.add('active');
+                tabRegister.classList.remove('active');
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                tabLogin.classList.remove('active');
+                tabRegister.classList.add('active');
+            }
+        }
+
+        function togglePassword(id, btn) {
+            const input = document.getElementById(id);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        // Password strength
+        document.getElementById('regPassword').addEventListener('input', function() {
+            const val = this.value;
+            const bar = document.getElementById('strengthBar');
+            const text = document.getElementById('strengthText');
+            let strength = 0;
+            if (val.length >= 8) strength++;
+            if (/[A-Z]/.test(val)) strength++;
+            if (/[0-9]/.test(val)) strength++;
+            if (/[^A-Za-z0-9]/.test(val)) strength++;
+
+            const levels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+            const colors = ['', '#ff4444', '#ff8800', '#ffcc00', '#44cc44'];
+            const widths = ['0%', '25%', '50%', '75%', '100%'];
+
+            bar.style.width = widths[strength];
+            bar.style.background = colors[strength];
+            text.textContent = strength > 0 ? `Password strength: ${levels[strength]}` : '';
+            text.style.color = colors[strength];
+        });
+
+        function showMsg(id, message, isError) {
+            const el = document.getElementById(id);
+            el.textContent = message;
+            el.className = 'form-msg ' + (isError ? 'error' : 'success');
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            if (!email || !password) {
+                showMsg('loginMsg', 'Please fill in all fields.', true);
+                return;
+            }
+            showMsg('loginMsg', 'Login successful! Redirecting...', false);
+            setTimeout(() => window.location.href = 'index.html', 1500);
+        }
+
+        function handleRegister() {
+            const first = document.getElementById('regFirstName').value;
+            const last = document.getElementById('regLastName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regConfirm').value;
+            const agreed = document.getElementById('agreeTerms').checked;
+
+            if (!first || !last || !email || !password || !confirm) {
+                showMsg('registerMsg', 'Please fill in all fields.', true);
+                return;
+            }
+            if (password !== confirm) {
+                showMsg('registerMsg', 'Passwords do not match.', true);
+                return;
+            }
+            if (!agreed) {
+                showMsg('registerMsg', 'Please agree to the Terms & Conditions.', true);
+                return;
+            }
+            showMsg('registerMsg', `Account created! Welcome, ${first}!`, false);
+            setTimeout(() => window.location.href = 'index.html', 1500);
+        }
+    </script>
+
+</body>
+</html>
