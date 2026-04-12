@@ -76,7 +76,7 @@ $isOrg = isset($_SESSION['role']) && $_SESSION['role'] === 'organizer';
     <div class="empty-state">
         <div class="empty-icon">🍿</div>
         <h3>No session yet</h3>
-        <p>Crée une session depuis la page Participants.</p>
+        <p>Crée une session depuis la page Planning.</p>
     </div>
 
     <?php elseif (empty($snacks)): ?>
